@@ -6,6 +6,10 @@ import { GeneratorScreen } from 'components/GeneratorScreen/GeneratorScreen';
 import { AppContextProvider } from 'components/AppContext/AppContext';
 import { JobsListScreen } from 'components/JobListScreen/JobsListScreen';
 import { FiltersModal } from 'components/FiltersModal/FiltersModal';
+import translations from 'utils/translations.json';
+import { addTranslations } from 'utils/i18n';
+
+addTranslations(translations);
 
 type RootStackParamList = {
   Generator: undefined;

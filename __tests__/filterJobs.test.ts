@@ -10,45 +10,65 @@ it('returns empty array if params are also empty', (): void => {
 const jobsMock: Job[] = [
   {
     id: '01',
-    requirements: ['flat'],
+    requirements: ['REQ001'],
   },
   {
     id: '02',
-    requirements: ['flat,ssn'],
+    requirements: ['REQ002,REQ003'],
   },
   {
     id: '03',
-    requirements: ['flat,car', 'bicycle'],
+    requirements: ['REQ002,REQ003', 'REQ004'],
   },
 ];
 
 it('returns correct results in given conditions', (): void => {
-  expect(filterJobs(jobsMock, ['car'])).toHaveLength(0);
-  expect(filterJobs(jobsMock, ['flat'])).toHaveLength(1);
-  expect(filterJobs(jobsMock, ['flat', 'ssn'])).toHaveLength(2);
-  expect(filterJobs(jobsMock, ['bicycle'])).toHaveLength(1);
+  expect(filterJobs(jobsMock, ['CAR'])).toHaveLength(0);
+  expect(filterJobs(jobsMock, ['REQ001'])).toHaveLength(1);
+  expect(filterJobs(jobsMock, ['REQ002', 'REQ003'])).toHaveLength(2);
+  expect(filterJobs(jobsMock, ['REQ004'])).toHaveLength(1);
 });
 
 const driverJobs: Job[] = [
   {
     id: '01',
-    requirements: ['car'],
+    requirements: ['CAR'],
   },
   {
     id: '02',
-    requirements: ['car 5 door'],
+    requirements: ['CAR_5DOOR'],
   },
   {
     id: '03',
-    requirements: ["car,driver's license"],
+    requirements: ['CAR,REQ009'],
   },
 ];
 
 it('returns correct results comparing similar strings', (): void => {
-  expect(filterJobs(driverJobs, ['car'])).toHaveLength(1);
-  expect(filterJobs(driverJobs, ['car 5 door'])).toHaveLength(2);
-  expect(filterJobs(driverJobs, ['car', "driver's license"])).toHaveLength(2);
-  expect(
-    filterJobs(driverJobs, ['car 5 door', "driver's license"]),
-  ).toHaveLength(3);
+  expect(filterJobs(driverJobs, ['CAR'])).toHaveLength(1);
+  expect(filterJobs(driverJobs, ['CAR_5DOOR'])).toHaveLength(2);
+  expect(filterJobs(driverJobs, ['CAR', 'REQ009'])).toHaveLength(2);
+  expect(filterJobs(driverJobs, ['CAR_5DOOR', 'REQ009'])).toHaveLength(3);
+});
+
+const subcatJobs: Job[] = [
+  {
+    id: '01',
+    requirements: ['PET_DOG'],
+  },
+  {
+    id: '02',
+    requirements: ['PET_CAT,PET_DOG'],
+  },
+  {
+    id: '03',
+    requirements: ['PET_CAT', 'CAR_5DOOR'],
+  },
+];
+
+it('returns correct results with subcategories', (): void => {
+  expect(filterJobs(subcatJobs, ['PET'])).toHaveLength(0);
+  expect(filterJobs(subcatJobs, ['PET_DOG'])).toHaveLength(1);
+  expect(filterJobs(subcatJobs, ['PET_CAT'])).toHaveLength(1);
+  expect(filterJobs(subcatJobs, ['PET_DOG', 'PET_CAT'])).toHaveLength(3);
 });

@@ -9,7 +9,8 @@ import { CloseButton } from 'ui/CloseButton';
 import { colors } from 'ui/colors';
 import { Spacer } from 'ui/Spacer';
 import { BoldText, RegularText } from 'ui/TextComponents';
-import { reqs } from 'utils/generateRandomJobs';
+import { reqs } from 'utils/constants';
+import { useTranslation } from 'react-i18next';
 
 const Container = styled(ScrollView)`
   padding: 0 20px;
@@ -43,6 +44,7 @@ export const FiltersModal = (): JSX.Element => {
   const navigation = useNavigation();
   const { toggleQualification, qualifications, clearQualifications } =
     useContext(AppContex);
+  const { t } = useTranslation();
 
   return (
     <SafeAreaView>
@@ -77,7 +79,7 @@ export const FiltersModal = (): JSX.Element => {
             (req): ReactNode => (
               <Chip
                 key={req}
-                text={req}
+                text={t(req)}
                 isActive={qualifications.indexOf(req) > -1}
                 color="bismark"
                 onPress={(): void => toggleQualification(req)}

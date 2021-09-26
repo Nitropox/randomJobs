@@ -1,30 +1,4 @@
-const vehicles = [
-  'car 5 door',
-  'car 4 door',
-  'car 3 door',
-  'car 2 door',
-  'car',
-  'motrcycle',
-  'boat',
-];
-
-export const reqs = [
-  'apartment',
-  'house',
-  'flat',
-  'storage place',
-  'garage',
-  'bicycle',
-  'bank account',
-  'ssn',
-  'work permit',
-  'paypal account',
-  'liability insurance',
-  'coding skills',
-  'devops skills',
-  "driver's license",
-  ...vehicles,
-];
+import { reqs, vehicles } from './constants';
 
 const getRandomInt = (min: number, max: number): number => {
   const minNum = Math.ceil(min);
@@ -54,7 +28,7 @@ const drawRandomStrings = (reqArray: string[]): string[] => {
     if (vehicles.includes(draw)) {
       return [
         draw,
-        "driver's license",
+        'REQ009', // driver's license
         drawElementsFromArray(
           1,
           arr.filter((el): boolean => el !== draw),
@@ -67,7 +41,7 @@ const drawRandomStrings = (reqArray: string[]): string[] => {
   if (conjunctionsNumber > 20) {
     const draw = drawElementsFromArray(1, arr)[0];
     if (vehicles.includes(draw)) {
-      return [draw, "driver's license"];
+      return [draw, 'REQ009'];
     }
     return drawElementsFromArray(2, arr);
   }
