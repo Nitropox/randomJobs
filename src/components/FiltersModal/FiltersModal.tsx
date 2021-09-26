@@ -55,7 +55,7 @@ export const FiltersModal = (): JSX.Element => {
         </Row>
         <Spacer size="XS" />
         <RegularText>
-          Show only the jobs that you can do with following requirements
+          Pick your skills and assets to see for which companies you can work
         </RegularText>
         <Row>
           <TouchableOpacity onPress={clearQualifications}>
