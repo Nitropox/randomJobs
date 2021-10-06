@@ -1,7 +1,7 @@
 declare global {
   interface Job {
     id: string;
-    requirements: string[];
+    requirements: string[][];
   }
 }
 

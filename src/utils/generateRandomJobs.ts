@@ -56,7 +56,7 @@ const drawRandomStrings = (reqArray: string[]): string[] => {
  * Generates array of strings with random requirements
  * each element is sorted alphabeticlly and joined
  */
-const getRandomRequirements = (): string[] => {
+const getRandomRequirements = (): string[][] => {
   const disjunctionsNumber = getRandomInt(0, 100);
   if (disjunctionsNumber > 99) {
     return []; // no skills required
@@ -72,11 +72,7 @@ const getRandomRequirements = (): string[] => {
     const thirdDraw = drawRandomStrings(
       reqs.filter((el): boolean => !table.includes(el)),
     );
-    return [
-      firstDraw.sort().join(),
-      secondDraw.sort().join(),
-      thirdDraw.sort().join(),
-    ];
+    return [firstDraw, secondDraw, thirdDraw];
   }
 
   if (disjunctionsNumber > 50) {
@@ -85,12 +81,12 @@ const getRandomRequirements = (): string[] => {
     const secondDraw = drawRandomStrings(
       reqs.filter((el): boolean => !firstDraw.includes(el)),
     );
-    return [firstDraw.sort().join(), secondDraw.sort().join()];
+    return [firstDraw, secondDraw];
   }
 
   if (disjunctionsNumber > 0) {
     // no disjunctions
-    return [drawRandomStrings(reqs).sort().join()];
+    return [drawRandomStrings(reqs)];
   } else {
     return [];
   }
