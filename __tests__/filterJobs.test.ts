@@ -72,3 +72,18 @@ it('returns correct results with subcategories', (): void => {
   expect(filterJobs(subcatJobs, ['PET_CAT'])).toHaveLength(1);
   expect(filterJobs(subcatJobs, ['PET_DOG', 'PET_CAT'])).toHaveLength(3);
 });
+
+const randomJobs: Job[] = [
+  {
+    id: '01',
+    requirements: [['CAR']],
+  },
+  {
+    id: '02',
+    requirements: [['CAR', 'VEHICLE001']],
+  },
+];
+
+it('returns correct results for user who has many skills', (): void => {
+  expect(filterJobs(randomJobs, ['CAR', 'REQ1', 'VEHICLE001'])).toHaveLength(2);
+});

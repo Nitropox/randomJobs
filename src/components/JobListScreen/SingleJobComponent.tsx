@@ -34,15 +34,15 @@ export const SingleJobComponent = ({ item, index }: Props): JSX.Element => {
       <Row>
         {item.requirements.map(
           (el, idx): ReactNode => (
-            <Row key={el}>
+            <Row key={idx}>
               <Row>
-                {el.split(',').map(
+                {el.map(
                   (entry, i): ReactNode => (
                     <Row key={entry}>
                       <RegularText fontSize={14} color="weePeep">
                         {t(entry)}
                       </RegularText>
-                      {el.split(',').length - 1 > i && (
+                      {el.length - 1 > i && (
                         <>
                           <Spacer size="XS" />
                           <BoldText fontSize={14} color="weePeep">
