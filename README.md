@@ -1,7 +1,7 @@
- APK file for android installation: https://drive.google.com/file/d/1tY-h8v8k2uZkztYH4VkbFr3fGjjB_8qp/view?usp=sharing
+ APK file for android installation: https://drive.google.com/file/d/1OOa1nSFe-c0Bip2S0Ia9T711qVvxhG47/view?usp=sharing
 # Random jobs RN app
 
-        $ cd crypto-orderbook
+        $ cd randomjobs
         
         $ npm i
 
