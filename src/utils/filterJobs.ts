@@ -11,10 +11,10 @@ export const filterJobs = (jobs: Job[], qualifiactions: string[]): Job[] => {
   if (!qualifiactions.length) {
     return [];
   }
-  const strippedQuali = qualifiactions
-    .map((q): string => (q.includes('_') ? q.split('_')[0] : q))
-    .sort()
-    .join();
+  const strippedQuali = qualifiactions.map((q): string =>
+    q.includes('_') ? q.split('_')[0] : q,
+  );
+  console.log(strippedQuali);
   return jobs.filter((job): boolean => {
     if (!job.requirements.length) {
       return true;
@@ -26,3 +26,4 @@ export const filterJobs = (jobs: Job[], qualifiactions: string[]): Job[] => {
     );
   });
 };
+
