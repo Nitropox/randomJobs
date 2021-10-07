@@ -1,7 +1,7 @@
 /**
- * The idea is: @param jobs requirements are kept as strings array in DNF form
- * that means conjuctions are joined with coma and disjunctions are new array elements
- * eg: ['car,flat','boat'] means car AND flat OR boat. Conjunction has higher priority.
+ * The idea is: @param jobs requirements are kept as 2 dimensional array of string in DNF form
+ * that means conjuctions are stored in a single row and disjunctions are stroed as column
+ * eg: [['car', 'flat],['boat']] means car AND flat OR boat. Conjunction has higher priority.
  * Additionaly, some entries have subcategories identified with underscore _
  * thx to this CAR_5DOOR is also qualified for jobs that need CAR and some other requirements.
  * @param qualifications array is just regular array of strings with single entries eg: ['flat', 'car']
