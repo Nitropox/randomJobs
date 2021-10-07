@@ -14,7 +14,7 @@ export const filterJobs = (jobs: Job[], qualifiactions: string[]): Job[] => {
   const strippedQuali = qualifiactions.map((q): string =>
     q.includes('_') ? q.split('_')[0] : q,
   );
-  console.log(strippedQuali);
+ 
   return jobs.filter((job): boolean => {
     if (!job.requirements.length) {
       return true;
